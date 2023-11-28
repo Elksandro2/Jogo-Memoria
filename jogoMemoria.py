@@ -11,6 +11,7 @@ root.configure(background="#282828")
 botao1 = None
 botao2 = None
 
+# Variável criado para detectar quando todas as cartas estiverem viradas
 contagem = 0
 
 def botaoClick(carta, button):
@@ -18,6 +19,7 @@ def botaoClick(carta, button):
 
     if botao1 is None:
         botao1 = (carta, button)
+        # Primeira carta sempre ficará visivel
         botao1[1].configure(bg="#a69a81")
     elif botao2 is None:
         botao2 = (carta, button)
@@ -26,12 +28,14 @@ def botaoClick(carta, button):
             # Se os caracteres forem iguais, mantenha os botões pressionados
             botao1[1].configure(bg="#a69a81")
             botao2[1].configure(bg="#a69a81")
+            # Deixará os botões sem funcionalidade depois de achar o par correspondente
             botao1[1].configure(state=DISABLED)
             botao2[1].configure(state=DISABLED)
-
+            # 18 cartas = 9 pares, a pessoa ganhará depois de descobrir todas
             if contagem == 9:
                 mensagem_vitoria.config(text="PARABÉNS, VOCÊ VENCEU!")
         else:
+            # Caso a segunda carta não seja igual a primeira, desvira a primeira
             botao1[1].configure(bg="#604848")
         # Limpa as variáveis para a próxima jogada
         botao1 = None
@@ -312,6 +316,7 @@ carta18 = Button(
 )
 carta18.grid(row=2, column=6, padx=10, pady=10)
 
+# Label referente ao texto de vitória do jogador
 mensagem_vitoria = Label(
     root,
     text="",
