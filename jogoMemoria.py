@@ -11,7 +11,7 @@ root.configure(background="#282828")
 botao1 = None
 botao2 = None
 
-# Variável criado para detectar quando todas as cartas estiverem viradas
+# Variável criada para detectar quando todas as cartas estiverem viradas
 contagem = 0
 
 def botaoClick(carta, button):
@@ -24,6 +24,7 @@ def botaoClick(carta, button):
     elif botao2 is None:
         botao2 = (carta, button)
         if botao1[0] == botao2[0]:
+            # Cada par de cartas achadas, será contabilizado 1 par, até chegar no total que é 9
             contagem += 1
             # Se os caracteres forem iguais, mantenha os botões pressionados
             botao1[1].configure(bg="#a69a81")
